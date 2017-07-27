@@ -12,7 +12,7 @@
 		03FC825A1F29AF7000A79B0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03FC82591F29AF7000A79B0D /* Assets.xcassets */; };
 		03FC825D1F29AF7000A79B0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03FC825B1F29AF7000A79B0D /* LaunchScreen.storyboard */; };
 		03FC82681F29AF7000A79B0D /* PromisePracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FC82671F29AF7000A79B0D /* PromisePracticeTests.swift */; };
-		03FC82761F29B48500A79B0D /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FC82751F29B48500A79B0D /* Repository.swift */; };
+		03FC82761F29B48500A79B0D /* models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FC82751F29B48500A79B0D /* models.swift */; };
 		03FC82781F29C16500A79B0D /* BitbucketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FC82771F29C16500A79B0D /* BitbucketService.swift */; };
 		03FC827C1F29E35A00A79B0D /* RepoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FC827A1F29E35A00A79B0D /* RepoBrowserViewController.swift */; };
 		03FC827D1F29E35A00A79B0D /* RepoBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03FC827B1F29E35A00A79B0D /* RepoBrowserViewController.xib */; };
@@ -40,7 +40,7 @@
 		03FC82631F29AF7000A79B0D /* PromisePracticeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PromisePracticeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FC82671F29AF7000A79B0D /* PromisePracticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisePracticeTests.swift; sourceTree = "<group>"; };
 		03FC82691F29AF7000A79B0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		03FC82751F29B48500A79B0D /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		03FC82751F29B48500A79B0D /* models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = models.swift; sourceTree = "<group>"; };
 		03FC82771F29C16500A79B0D /* BitbucketService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitbucketService.swift; sourceTree = "<group>"; };
 		03FC827A1F29E35A00A79B0D /* RepoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoBrowserViewController.swift; sourceTree = "<group>"; };
 		03FC827B1F29E35A00A79B0D /* RepoBrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoBrowserViewController.xib; sourceTree = "<group>"; };
@@ -127,17 +127,9 @@
 			isa = PBXGroup;
 			children = (
 				03FC82771F29C16500A79B0D /* BitbucketService.swift */,
-				03FC82741F29B27200A79B0D /* models */,
+				03FC82751F29B48500A79B0D /* models.swift */,
 			);
 			name = Bitbucket;
-			sourceTree = "<group>";
-		};
-		03FC82741F29B27200A79B0D /* models */ = {
-			isa = PBXGroup;
-			children = (
-				03FC82751F29B48500A79B0D /* Repository.swift */,
-			);
-			name = models;
 			sourceTree = "<group>";
 		};
 		03FC82791F29E2A400A79B0D /* RepoBrowser */ = {
@@ -376,7 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03FC82531F29AF7000A79B0D /* AppDelegate.swift in Sources */,
-				03FC82761F29B48500A79B0D /* Repository.swift in Sources */,
+				03FC82761F29B48500A79B0D /* models.swift in Sources */,
 				03FC827C1F29E35A00A79B0D /* RepoBrowserViewController.swift in Sources */,
 				03FC82781F29C16500A79B0D /* BitbucketService.swift in Sources */,
 			);

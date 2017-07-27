@@ -24,8 +24,7 @@ class BitbucketAPIService {
     fileprivate func queueAPICall(uri path: String, type: HTTPMethod) -> Promise<JSON> {
         return Promise { fulfill, reject in
             self.apiQueue.async { [weak self] in
-                guard let `self` = self else { return }
-                Alamofire.request("\(self.baseAPIUri)\(path)", method: type).responseJSON { response in
+                Alamofire.request("\(path)", method: type).responseJSON { response in
                     if let responseValue = response.result.value {
                         fulfill(JSON(responseValue))
                     } else {
@@ -55,15 +54,63 @@ extension BitbucketAPIService {
                     }
                     fulfill(repositories)
                 } else {
-                    reject(BitbucketError())
+                    reject(BitbucketError(.malformedData))
                 }
             }.catch { error in
-                reject(BitbucketError())
+                reject(BitbucketError(.unknown))
             }
         }
     }
     
-    func getRepositories(for user: BitbucketUser){
-        
+    /// Get List of a users repositories
+    func getRepositories(for user: BitbucketUser) -> Promise<[Repository]> {
+        return Promise { fulfill, reject in
+            firstly {
+                self.expandUserDetails(for: user)
+            }.then(on: self.apiQueue) { user -> (Promise<JSON>) in
+                if let repositoriesUrl = user.links?.repositoriesUrl {
+                    return self.queueAPICall(uri: repositoriesUrl, type: .get)
+                } else {
+                    throw (BitbucketError(.missingUrl))
+                }
+            }.then(on: self.apiQueue) { json -> () in
+                if let repositoryArray = json["values"].array {
+                    var repositories = [Repository]()
+                    for repositoryAsJson in repositoryArray {
+                        if let repository = Repository.buildRepository(from: repositoryAsJson) {
+                            repositories.append(repository)
+                        }
+                    }
+                    fulfill(repositories)
+                } else {
+                    reject(BitbucketError(.malformedData))
+                }
+            }.catch { error in
+                reject(error)
+            }
+            
+        }
+    }
+    
+}
+
+// MARK: Bitbucket USER API Methods
+extension BitbucketAPIService {
+    /// Get Bitbucket User Detail response and fully populate BitbucketUser Model
+    fileprivate func expandUserDetails(for user: BitbucketUser) -> Promise<BitbucketUser> {
+        return Promise { fulfill, reject in
+            guard let profileUrl = user.links?.selfUrl else {
+                reject(BitbucketError(.missingUrl))
+                return
+            }
+            firstly {
+                self.queueAPICall(uri: profileUrl, type: .get)
+                }.then(on: self.apiQueue) { json -> () in
+                    fulfill(BitbucketUser.buildBitBucketUser(from: json))
+                }.catch { error in
+                    reject(error)
+            }
+            
+        }
     }
 }
