@@ -16,39 +16,53 @@ import PromiseKit
 class BitbucketAPIService {
     static let shared = BitbucketAPIService()
     fileprivate let baseAPIUri = "https://api.bitbucket.org/2.0"
+    fileprivate let apiQueue = DispatchQueue(label: "BitbucketAPIQueue", qos: .userInitiated, attributes: .concurrent)
     
     private init() {
-        
     }
     
-}
-
-// MARK: Bitbucket REPOSITORY API Methods
-
-/// Get List of latest Bitbucket Repositories
-extension BitbucketAPIService {
-    func getLatestRepos() -> Promise<[Repository]> {
+    fileprivate func queueAPICall(uri path: String, type: HTTPMethod) -> Promise<JSON> {
         return Promise { fulfill, reject in
-            Alamofire.request("\(self.baseAPIUri)/repositories/?pagelen=4", method: .get).responseJSON { response in
-                if let responseValue = response.result.value {
-                    let json = JSON(responseValue)
-                    
-                    if let repositoryArray = json["values"].array {
-                        var repositories = [Repository]()
-                        for repositoryAsJson in repositoryArray {
-                            if let repository = Repository.buildRepository(from: repositoryAsJson) {
-                                repositories.append(repository)
-                            }
-                        }
-                        fulfill(repositories)
+            self.apiQueue.async {
+                Alamofire.request("\(self.baseAPIUri)/repositories/?pagelen=4", method: .get).responseJSON { response in
+                    if let responseValue = response.result.value {
+                        fulfill(JSON(responseValue))
                     } else {
                         reject(response.error ?? BitbucketError())
                     }
                 }
             }
         }
+    }
+    
+}
+
+// MARK: Bitbucket REPOSITORY API Methods
+extension BitbucketAPIService {
+    /// Get List of latest Bitbucket Repositories
+    func getLatestRepos() -> Promise<[Repository]> {
+        return Promise { fulfill, reject in
+            firstly {
+                self.queueAPICall(uri: "\(self.baseAPIUri)/repositories/?pagelen=4", type: .get)
+            }.then { json -> () in
+                if let repositoryArray = json["values"].array {
+                    var repositories = [Repository]()
+                    for repositoryAsJson in repositoryArray {
+                        if let repository = Repository.buildRepository(from: repositoryAsJson) {
+                            repositories.append(repository)
+                        }
+                    }
+                    fulfill(repositories)
+                } else {
+                    reject(BitbucketError())
+                }
+            }.catch { error in
+                reject(BitbucketError())
+            }
+        }
+    }
+    
+    func getRepositories(for user: BitbucketUser){
         
     }
 }
-
-
