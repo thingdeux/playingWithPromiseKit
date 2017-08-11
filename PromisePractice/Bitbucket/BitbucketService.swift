@@ -45,7 +45,7 @@ extension BitbucketAPIService {
         return Promise { fulfill, reject in
             
             firstly {
-                self.queueAPICall(uri: "\(self.baseAPIUri)/repositories/?pagelen=4", type: .get)
+                self.queueAPICall(uri: "\(self.baseAPIUri)/repositories/?pagelen=10", type: .get)
             }.then(on: self.apiQueue) { json -> () in
                 if let repositoryArray = json["values"].array {
                     var repositories = [Repository]()

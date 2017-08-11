@@ -15,10 +15,13 @@ class RepoBrowserTableView: UITableView {
     func setup(with repositories: [BitbucketUser]) {
         self.register(UINib(nibName: RepoBrowserTableViewCell.Constants.nibName, bundle: nil),
                       forCellReuseIdentifier: RepoBrowserTableViewCell.Constants.reuseId)
+        
+        self.dataSource = self
+        self.delegate = self
         self.bitbucketUsers = repositories
         
         DispatchQueue.main.async {
-            self.reloadData()
+            self.reloadData()            
         }
     }
 
@@ -26,6 +29,11 @@ class RepoBrowserTableView: UITableView {
 
 extension RepoBrowserTableView : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: RepoBrowserTableViewCell.Constants.reuseId, for: indexPath) as? RepoBrowserTableViewCell {
+            let user = self.bitbucketUsers[indexPath.row]
+            cell.setup(with: user)
+            return cell
+        }        
         return UITableViewCell()
     }
     
@@ -40,7 +48,9 @@ extension RepoBrowserTableView : UITableViewDataSource {
 
 extension RepoBrowserTableView : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let user = self.bitbucketUsers[indexPath.row]
-        print(user.username)        
+        super.deselectRow(at: indexPath, animated: true)
+//        let user = self.bitbucketUsers[indexPath.row]
     }
+    
+    
 }
