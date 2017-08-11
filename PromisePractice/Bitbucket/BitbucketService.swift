@@ -23,7 +23,7 @@ class BitbucketAPIService {
     
     fileprivate func queueAPICall(uri path: String, type: HTTPMethod) -> Promise<JSON> {
         return Promise { fulfill, reject in
-            self.apiQueue.async { [weak self] in
+            self.apiQueue.async {
                 Alamofire.request("\(path)", method: type).responseJSON { response in
                     if let responseValue = response.result.value {
                         fulfill(JSON(responseValue))
@@ -41,7 +41,9 @@ class BitbucketAPIService {
 extension BitbucketAPIService {
     /// Get List of latest Bitbucket Repositories
     func getLatestRepos() -> Promise<[Repository]> {
+        
         return Promise { fulfill, reject in
+            
             firstly {
                 self.queueAPICall(uri: "\(self.baseAPIUri)/repositories/?pagelen=4", type: .get)
             }.then(on: self.apiQueue) { json -> () in
@@ -60,10 +62,13 @@ extension BitbucketAPIService {
                 reject(BitbucketError(.unknown))
             }
         }
+        
+        
     }
     
     /// Get List of a users repositories
     func getRepositories(for user: BitbucketUser) -> Promise<[Repository]> {
+        
         return Promise { fulfill, reject in
             firstly {
                 self.expandUserDetails(for: user)

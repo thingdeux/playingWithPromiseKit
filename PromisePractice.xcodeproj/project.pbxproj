@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03431B9F1F3D63530058E64A /* RepoBrowserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03431B9D1F3D63530058E64A /* RepoBrowserTableViewCell.swift */; };
+		03431BA01F3D63530058E64A /* RepoBrowserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03431B9E1F3D63530058E64A /* RepoBrowserTableViewCell.xib */; };
+		03431BA21F3D65500058E64A /* RepoBrowserTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03431BA11F3D65500058E64A /* RepoBrowserTableView.swift */; };
 		03FC82531F29AF7000A79B0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FC82521F29AF7000A79B0D /* AppDelegate.swift */; };
 		03FC82581F29AF7000A79B0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03FC82561F29AF7000A79B0D /* Main.storyboard */; };
 		03FC825A1F29AF7000A79B0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03FC82591F29AF7000A79B0D /* Assets.xcassets */; };
@@ -15,7 +18,6 @@
 		03FC82761F29B48500A79B0D /* models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FC82751F29B48500A79B0D /* models.swift */; };
 		03FC82781F29C16500A79B0D /* BitbucketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FC82771F29C16500A79B0D /* BitbucketService.swift */; };
 		03FC827C1F29E35A00A79B0D /* RepoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FC827A1F29E35A00A79B0D /* RepoBrowserViewController.swift */; };
-		03FC827D1F29E35A00A79B0D /* RepoBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03FC827B1F29E35A00A79B0D /* RepoBrowserViewController.xib */; };
 		04A70DF059D3252A5D98DD1A /* Pods_PromisePractice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E434F13A629414A44A48A87 /* Pods_PromisePractice.framework */; };
 		70A528631DF606EBB9DF88AC /* Pods_PromisePracticeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB77198A41B47FA989B69622 /* Pods_PromisePracticeTests.framework */; };
 /* End PBXBuildFile section */
@@ -31,6 +33,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03431B9D1F3D63530058E64A /* RepoBrowserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoBrowserTableViewCell.swift; sourceTree = "<group>"; };
+		03431B9E1F3D63530058E64A /* RepoBrowserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoBrowserTableViewCell.xib; sourceTree = "<group>"; };
+		03431BA11F3D65500058E64A /* RepoBrowserTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoBrowserTableView.swift; sourceTree = "<group>"; };
 		03FC824F1F29AF7000A79B0D /* PromisePractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PromisePractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FC82521F29AF7000A79B0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03FC82571F29AF7000A79B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -43,7 +48,6 @@
 		03FC82751F29B48500A79B0D /* models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = models.swift; sourceTree = "<group>"; };
 		03FC82771F29C16500A79B0D /* BitbucketService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitbucketService.swift; sourceTree = "<group>"; };
 		03FC827A1F29E35A00A79B0D /* RepoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoBrowserViewController.swift; sourceTree = "<group>"; };
-		03FC827B1F29E35A00A79B0D /* RepoBrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoBrowserViewController.xib; sourceTree = "<group>"; };
 		0E434F13A629414A44A48A87 /* Pods_PromisePractice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PromisePractice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1851561F8FCA9719A4C5939 /* Pods-PromisePracticeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PromisePracticeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PromisePracticeTests/Pods-PromisePracticeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB77198A41B47FA989B69622 /* Pods_PromisePracticeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PromisePracticeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +76,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03431B9C1F3D63380058E64A /* TableViews */ = {
+			isa = PBXGroup;
+			children = (
+				03431B9D1F3D63530058E64A /* RepoBrowserTableViewCell.swift */,
+				03431B9E1F3D63530058E64A /* RepoBrowserTableViewCell.xib */,
+				03431BA11F3D65500058E64A /* RepoBrowserTableView.swift */,
+			);
+			path = TableViews;
+			sourceTree = "<group>";
+		};
 		03FC82461F29AF7000A79B0D = {
 			isa = PBXGroup;
 			children = (
@@ -129,14 +143,14 @@
 				03FC82771F29C16500A79B0D /* BitbucketService.swift */,
 				03FC82751F29B48500A79B0D /* models.swift */,
 			);
-			name = Bitbucket;
+			path = Bitbucket;
 			sourceTree = "<group>";
 		};
 		03FC82791F29E2A400A79B0D /* RepoBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				03431B9C1F3D63380058E64A /* TableViews */,
 				03FC827A1F29E35A00A79B0D /* RepoBrowserViewController.swift */,
-				03FC827B1F29E35A00A79B0D /* RepoBrowserViewController.xib */,
 			);
 			name = RepoBrowser;
 			path = PromisePractice/RepoBrowser;
@@ -253,10 +267,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03431BA01F3D63530058E64A /* RepoBrowserTableViewCell.xib in Resources */,
 				03FC825D1F29AF7000A79B0D /* LaunchScreen.storyboard in Resources */,
 				03FC825A1F29AF7000A79B0D /* Assets.xcassets in Resources */,
 				03FC82581F29AF7000A79B0D /* Main.storyboard in Resources */,
-				03FC827D1F29E35A00A79B0D /* RepoBrowserViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,9 +381,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03431B9F1F3D63530058E64A /* RepoBrowserTableViewCell.swift in Sources */,
 				03FC82531F29AF7000A79B0D /* AppDelegate.swift in Sources */,
 				03FC82761F29B48500A79B0D /* models.swift in Sources */,
 				03FC827C1F29E35A00A79B0D /* RepoBrowserViewController.swift in Sources */,
+				03431BA21F3D65500058E64A /* RepoBrowserTableView.swift in Sources */,
 				03FC82781F29C16500A79B0D /* BitbucketService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
